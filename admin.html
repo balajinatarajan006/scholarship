@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Scholarship Management System</title>
+    <!-- Google Fonts Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Admin Sidebar Navigation -->
+        <aside class="sidebar" id="app-sidebar">
+            <div class="sidebar-header" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);">
+                <i class="fas fa-user-shield sidebar-logo-icon"></i>
+                <div class="sidebar-brand">
+                    <h2>Admin Portal</h2>
+                    <span>Scholarship System</span>
+                </div>
+            </div>
+
+            <div class="sidebar-menu">
+                <div class="menu-category">Admin Management</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <button class="nav-link admin-tab-btn active" data-target="admin-pane-apps">
+                            <i class="fas fa-file-invoice"></i>
+                            <span>Applications</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link admin-tab-btn" data-target="admin-pane-students">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>Students</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link admin-tab-btn" data-target="admin-pane-scholarships">
+                            <i class="fas fa-award"></i>
+                            <span>Scholarships</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link admin-tab-btn" data-target="admin-pane-reports">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Reports & Analytics</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="#" class="btn btn-secondary btn-block btn-logout">
+                    <i class="fas fa-right-from-bracket"></i> Admin Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="hamburger-btn" id="hamburger-toggle" aria-label="Toggle navigation drawer">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>System Administration</h1>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="user-profile-menu">
+                        <div class="avatar" style="background: var(--gradient-hero);">AD</div>
+                        <div class="user-info">
+                            <span class="user-name">System Administrator</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-sm btn-secondary btn-logout" title="Sign Out">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="content-area">
+                <!-- Statistics Overview Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-details">
+                            <span class="stat-title">Total Students</span>
+                            <h3 class="stat-value" id="admin-stat-students">0</h3>
+                        </div>
+                        <div class="stat-icon blue">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-details">
+                            <span class="stat-title">Total Applications</span>
+                            <h3 class="stat-value" id="admin-stat-apps">0</h3>
+                        </div>
+                        <div class="stat-icon purple">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-details">
+                            <span class="stat-title">Pending Review</span>
+                            <h3 class="stat-value" id="admin-stat-pending">0</h3>
+                        </div>
+                        <div class="stat-icon warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-details">
+                            <span class="stat-title">Approved</span>
+                            <h3 class="stat-value" id="admin-stat-approved">0</h3>
+                        </div>
+                        <div class="stat-icon green">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-details">
+                            <span class="stat-title">Rejected</span>
+                            <h3 class="stat-value" id="admin-stat-rejected">0</h3>
+                        </div>
+                        <div class="stat-icon red">
+                            <i class="fas fa-circle-xmark"></i>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-details">
+                            <span class="stat-title">Total Approved Fund</span>
+                            <h3 class="stat-value" id="admin-stat-amount">₹0</h3>
+                        </div>
+                        <div class="stat-icon green">
+                            <i class="fas fa-hand-holding-dollar"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Pane 1: Applications Management -->
+                <div class="tab-pane active" id="admin-pane-apps">
+                    <div class="card-box">
+                        <div class="card-box-header">
+                            <h3 class="card-box-title">Student Application Queue</h3>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>App ID</th>
+                                        <th>Student Name</th>
+                                        <th>Register #</th>
+                                        <th>Scholarship Scheme</th>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-apps-tbody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+
+                            <div class="empty-state" id="admin-apps-empty" style="display: none;">
+                                <div class="empty-state-icon">
+                                    <i class="fas fa-inbox"></i>
+                                </div>
+                                <h3>No applications in queue</h3>
+                                <p>Student submitted applications will appear here for verification and approval.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Pane 2: Students Management -->
+                <div class="tab-pane" id="admin-pane-students">
+                    <div class="card-box">
+                        <div class="card-box-header">
+                            <h3 class="card-box-title">Registered Students Directory</h3>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Student Name</th>
+                                        <th>Email</th>
+                                        <th>Register Number</th>
+                                        <th>Department</th>
+                                        <th>College</th>
+                                        <th>Academic Year</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-students-tbody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+
+                            <div class="empty-state" id="admin-students-empty" style="display: none;">
+                                <div class="empty-state-icon">
+                                    <i class="fas fa-users-slash"></i>
+                                </div>
+                                <h3>No registered students</h3>
+                                <p>Newly registered student profiles will be listed here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Pane 3: Scholarships Management -->
+                <div class="tab-pane" id="admin-pane-scholarships">
+                    <div class="card-box">
+                        <div class="card-box-header">
+                            <h3 class="card-box-title">Active & Inactive Scholarship Schemes</h3>
+                            <button onclick="openModal('add-scholarship-modal')" class="btn btn-primary btn-sm">
+                                <i class="fas fa-plus"></i> Add New Scholarship
+                            </button>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Scheme Name</th>
+                                        <th>Category Type</th>
+                                        <th>Grant Amount</th>
+                                        <th>Academic Year</th>
+                                        <th>Slots</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-scholarships-tbody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Pane 4: Reports & Analytics -->
+                <div class="tab-pane" id="admin-pane-reports">
+                    <div class="card-box">
+                        <div class="card-box-header">
+                            <h3 class="card-box-title">Analytics & Distribution Reports</h3>
+                        </div>
+
+                        <div class="charts-grid">
+                            <div class="chart-card">
+                                <h4 class="chart-title">Applications by Status Breakdown</h4>
+                                <div class="css-bar-chart">
+                                    <div class="bar-item">
+                                        <div class="bar-label">
+                                            <span>Pending Applications</span>
+                                            <span class="bar-count">0</span>
+                                        </div>
+                                        <div class="bar-track">
+                                            <div class="bar-fill warning" id="bar-pending" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bar-item">
+                                        <div class="bar-label">
+                                            <span>Under Review</span>
+                                            <span class="bar-count">0</span>
+                                        </div>
+                                        <div class="bar-track">
+                                            <div class="bar-fill blue" id="bar-review" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bar-item">
+                                        <div class="bar-label">
+                                            <span>Approved Applications</span>
+                                            <span class="bar-count">0</span>
+                                        </div>
+                                        <div class="bar-track">
+                                            <div class="bar-fill green" id="bar-approved" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bar-item">
+                                        <div class="bar-label">
+                                            <span>Rejected Applications</span>
+                                            <span class="bar-count">0</span>
+                                        </div>
+                                        <div class="bar-track">
+                                            <div class="bar-fill red" id="bar-rejected" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Application Details Modal -->
+    <div class="modal-backdrop" id="view-app-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Application Verification Detail</h3>
+                <button class="modal-close"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="view-modal-body">
+                <!-- Populated via script.js -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Scholarship Modal -->
+    <div class="modal-backdrop" id="add-scholarship-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Add New Scholarship Scheme</h3>
+                <button class="modal-close"><i class="fas fa-xmark"></i></button>
+            </div>
+            <form id="add-scholarship-form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="sch-name">Scholarship Name *</label>
+                        <input type="text" id="sch-name" class="form-control" placeholder="e.g. Merit Excellence Scholarship" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sch-type">Scheme Category *</label>
+                        <select id="sch-type" class="form-control" required>
+                            <option value="Merit-Based">Merit-Based</option>
+                            <option value="Need-Based">Need-Based</option>
+                            <option value="State Sponsored">State Sponsored</option>
+                            <option value="Empowerment">Empowerment</option>
+                            <option value="Category-Based">Category-Based</option>
+                            <option value="Talent-Based">Talent-Based</option>
+                            <option value="Postgraduate">Postgraduate</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sch-amount">Grant Amount (₹) *</label>
+                        <input type="number" id="sch-amount" class="form-control" placeholder="e.g. 50000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sch-year">Academic Year *</label>
+                        <input type="text" id="sch-year" class="form-control" value="2025-2026" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sch-slots">Available Slots *</label>
+                        <input type="number" id="sch-slots" class="form-control" placeholder="e.g. 100" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sch-desc">Eligibility Description</label>
+                        <textarea id="sch-desc" class="form-control" rows="3" placeholder="Eligibility criteria and target audience details..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Create Scheme</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>

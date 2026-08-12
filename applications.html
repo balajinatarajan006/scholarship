@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications - Scholarship Management System</title>
+    <!-- Google Fonts Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="app-sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-graduation-cap sidebar-logo-icon"></i>
+                <div class="sidebar-brand">
+                    <h2>Scholarship</h2>
+                    <span>Portal System</span>
+                </div>
+            </div>
+
+            <div class="sidebar-menu">
+                <div class="menu-category">Main Menu</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="apply.html" class="nav-link">
+                            <i class="fas fa-file-signature"></i>
+                            <span>Apply Scholarship</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="applications.html" class="nav-link active">
+                            <i class="fas fa-folder-open"></i>
+                            <span>My Applications</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="profile.html" class="nav-link">
+                            <i class="fas fa-user-circle"></i>
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="notifications.html" class="nav-link">
+                            <i class="fas fa-bell"></i>
+                            <span>Notifications</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="#" class="btn btn-secondary btn-block btn-logout">
+                    <i class="fas fa-right-from-bracket"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="hamburger-btn" id="hamburger-toggle" aria-label="Toggle navigation drawer">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>My Scholarship Applications</h1>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <a href="notifications.html" class="icon-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-count notification-badge-count" style="display:none;">0</span>
+                    </a>
+
+                    <a href="profile.html" class="user-profile-menu">
+                        <div class="avatar">U</div>
+                        <div class="user-info">
+                            <span class="user-name user-name-display">Student Name</span>
+                            <span class="user-role user-role-display">Student</span>
+                        </div>
+                    </a>
+
+                    <button class="btn btn-sm btn-secondary btn-logout" title="Sign Out">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="content-area">
+                <div class="card-box">
+                    <!-- Filter and Search Header -->
+                    <div class="filter-bar">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="apps-search" class="form-control" placeholder="Search by App ID or Scholarship...">
+                        </div>
+
+                        <div class="filter-pills">
+                            <button class="filter-pill active" data-filter="All">All</button>
+                            <button class="filter-pill" data-filter="Pending">Pending</button>
+                            <button class="filter-pill" data-filter="Under Review">Under Review</button>
+                            <button class="filter-pill" data-filter="Approved">Approved</button>
+                            <button class="filter-pill" data-filter="Rejected">Rejected</button>
+                        </div>
+                    </div>
+
+                    <!-- Applications Table -->
+                    <div class="table-responsive">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Application ID</th>
+                                    <th>Scholarship Name</th>
+                                    <th>Academic Year</th>
+                                    <th>Application Date</th>
+                                    <th>Grant Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="my-apps-tbody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+
+                        <!-- Empty State -->
+                        <div class="empty-state" id="my-apps-empty" style="display: none;">
+                            <div class="empty-state-icon">
+                                <i class="fas fa-folder-open"></i>
+                            </div>
+                            <h3>No applications found</h3>
+                            <p>Try adjusting your search criteria or apply for a new scholarship scheme.</p>
+                            <a href="apply.html" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Apply Scholarship
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Application Details Modal -->
+    <div class="modal-backdrop" id="view-app-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Scholarship Application Summary</h3>
+                <button class="modal-close"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="view-modal-body">
+                <!-- Populated via script.js -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>

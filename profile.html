@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Scholarship Management System</title>
+    <!-- Google Fonts Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="app-sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-graduation-cap sidebar-logo-icon"></i>
+                <div class="sidebar-brand">
+                    <h2>Scholarship</h2>
+                    <span>Portal System</span>
+                </div>
+            </div>
+
+            <div class="sidebar-menu">
+                <div class="menu-category">Main Menu</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="apply.html" class="nav-link">
+                            <i class="fas fa-file-signature"></i>
+                            <span>Apply Scholarship</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="applications.html" class="nav-link">
+                            <i class="fas fa-folder-open"></i>
+                            <span>My Applications</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="profile.html" class="nav-link active">
+                            <i class="fas fa-user-circle"></i>
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="notifications.html" class="nav-link">
+                            <i class="fas fa-bell"></i>
+                            <span>Notifications</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="#" class="btn btn-secondary btn-block btn-logout">
+                    <i class="fas fa-right-from-bracket"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="hamburger-btn" id="hamburger-toggle" aria-label="Toggle navigation drawer">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Student Profile</h1>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <a href="notifications.html" class="icon-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-count notification-badge-count" style="display:none;">0</span>
+                    </a>
+
+                    <a href="profile.html" class="user-profile-menu">
+                        <div class="avatar">U</div>
+                        <div class="user-info">
+                            <span class="user-name user-name-display">Student Name</span>
+                            <span class="user-role user-role-display">Student</span>
+                        </div>
+                    </a>
+
+                    <button class="btn btn-sm btn-secondary btn-logout" title="Sign Out">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="content-area">
+                <div class="card-box">
+                    <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem;">
+                        <div class="avatar" id="prof-avatar-large" style="width: 90px; height: 90px; font-size: 2.2rem; font-weight: 700;">U</div>
+                        <div style="flex: 1;">
+                            <h2 id="prof-name" style="font-size: 1.5rem; font-weight: 700; color: var(--text-main);">Student Name</h2>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Registered Student • Active Account</p>
+                        </div>
+                        <div>
+                            <button id="edit-profile-btn" class="btn btn-primary">
+                                <i class="fas fa-pen-to-square"></i> Edit Profile
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <label>Email Address</label>
+                            <p id="prof-email">student@university.edu</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Register Number</label>
+                            <p id="prof-regno">REG2026001</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Mobile Number</label>
+                            <p id="prof-mobile">+91 98765 43210</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Department</label>
+                            <p id="prof-dept">Computer Science & Engineering</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>College / University</label>
+                            <p id="prof-college">National Institute of Technology</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Academic Year</label>
+                            <p id="prof-year">3rd Year</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Date of Birth</label>
+                            <p id="prof-dob">2004-05-15</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal-backdrop" id="edit-profile-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Edit Student Profile</h3>
+                <button class="modal-close"><i class="fas fa-xmark"></i></button>
+            </div>
+            <form id="edit-profile-form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="edit-fullname">Full Name *</label>
+                        <input type="text" id="edit-fullname" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-mobile">Mobile Number *</label>
+                        <input type="tel" id="edit-mobile" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-dept">Department *</label>
+                        <input type="text" id="edit-dept" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-college">College / University *</label>
+                        <input type="text" id="edit-college" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-year">Academic Year *</label>
+                        <select id="edit-year" class="form-control" required>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                            <option value="Postgraduate">Postgraduate</option>
+                            <option value="Doctoral / PhD">Doctoral / PhD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>

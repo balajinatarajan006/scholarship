@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Scholarship - Scholarship Management System</title>
+    <!-- Google Fonts Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="app-sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-graduation-cap sidebar-logo-icon"></i>
+                <div class="sidebar-brand">
+                    <h2>Scholarship</h2>
+                    <span>Portal System</span>
+                </div>
+            </div>
+
+            <div class="sidebar-menu">
+                <div class="menu-category">Main Menu</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="apply.html" class="nav-link active">
+                            <i class="fas fa-file-signature"></i>
+                            <span>Apply Scholarship</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="applications.html" class="nav-link">
+                            <i class="fas fa-folder-open"></i>
+                            <span>My Applications</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="profile.html" class="nav-link">
+                            <i class="fas fa-user-circle"></i>
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="notifications.html" class="nav-link">
+                            <i class="fas fa-bell"></i>
+                            <span>Notifications</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="#" class="btn btn-secondary btn-block btn-logout">
+                    <i class="fas fa-right-from-bracket"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="hamburger-btn" id="hamburger-toggle" aria-label="Toggle navigation drawer">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Scholarship Application Form</h1>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <a href="notifications.html" class="icon-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-count notification-badge-count" style="display:none;">0</span>
+                    </a>
+
+                    <a href="profile.html" class="user-profile-menu">
+                        <div class="avatar">U</div>
+                        <div class="user-info">
+                            <span class="user-name user-name-display">Student Name</span>
+                            <span class="user-role user-role-display">Student</span>
+                        </div>
+                    </a>
+
+                    <button class="btn btn-sm btn-secondary btn-logout" title="Sign Out">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="content-area">
+                <form id="scholarship-apply-form">
+                    <!-- Step 1: Student Information -->
+                    <div class="card-box">
+                        <div class="card-box-header">
+                            <h3 class="card-box-title">
+                                <i class="fas fa-user-graduate" style="color: var(--primary); margin-right: 0.5rem;"></i>
+                                Student Profile Information
+                            </h3>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Auto-filled from account</span>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="apply-name">Full Name</label>
+                                <input type="text" id="apply-name" class="form-control" readonly style="background: var(--background);">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-regno">Register Number</label>
+                                <input type="text" id="apply-regno" class="form-control" readonly style="background: var(--background);">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-email">Email Address</label>
+                                <input type="email" id="apply-email" class="form-control" readonly style="background: var(--background);">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-mobile">Mobile Number</label>
+                                <input type="tel" id="apply-mobile" class="form-control" readonly style="background: var(--background);">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-dept">Department</label>
+                                <input type="text" id="apply-dept" class="form-control" readonly style="background: var(--background);">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-college">College / Institute</label>
+                                <input type="text" id="apply-college" class="form-control" readonly style="background: var(--background);">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Scholarship Details -->
+                    <div class="card-box">
+                        <div class="card-box-header">
+                            <h3 class="card-box-title">
+                                <i class="fas fa-award" style="color: var(--primary); margin-right: 0.5rem;"></i>
+                                Scholarship Selection & Financial Details
+                            </h3>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="apply-scholarship-name">Scholarship Scheme *</label>
+                                <select id="apply-scholarship-name" class="form-control" required>
+                                    <!-- Populated via script.js -->
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-year">Academic Year *</label>
+                                <input type="text" id="apply-year" class="form-control" placeholder="e.g. 2025-2026" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-amount">Scholarship Grant Amount</label>
+                                <input type="text" id="apply-amount" class="form-control" readonly placeholder="Auto-calculated" style="background: var(--background); font-weight: 700; color: var(--success);">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-income">Annual Family Income (₹) *</label>
+                                <input type="number" id="apply-income" class="form-control" placeholder="e.g. 180000" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-cgpa">CGPA / Percentage *</label>
+                                <input type="number" step="0.01" id="apply-cgpa" class="form-control" placeholder="e.g. 8.75 or 87.5" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-bankno">Bank Account Number *</label>
+                                <input type="text" id="apply-bankno" class="form-control" placeholder="Account Number for Direct Benefit Transfer" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apply-ifsc">IFSC Code *</label>
+                                <input type="text" id="apply-ifsc" class="form-control" placeholder="e.g. SBIN0001234" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Supporting Documents -->
+                    <div class="card-box">
+                        <div class="card-box-header">
+                            <h3 class="card-box-title">
+                                <i class="fas fa-file-pdf" style="color: var(--primary); margin-right: 0.5rem;"></i>
+                                Required Verification Documents
+                            </h3>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">PDF / JPG format supported</span>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Aadhaar Card *</label>
+                                <label class="file-upload-zone">
+                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <p style="font-size: 0.85rem; font-weight: 500;">Click to upload Aadhaar Card</p>
+                                    <input type="file" class="file-input-field" hidden required accept=".pdf,.jpg,.jpeg,.png">
+                                    <span class="selected-file-name" style="display:none;"></span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>College Student ID *</label>
+                                <label class="file-upload-zone">
+                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <p style="font-size: 0.85rem; font-weight: 500;">Click to upload College ID</p>
+                                    <input type="file" class="file-input-field" hidden required accept=".pdf,.jpg,.jpeg,.png">
+                                    <span class="selected-file-name" style="display:none;"></span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Marks Sheet / Grade Sheet *</label>
+                                <label class="file-upload-zone">
+                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <p style="font-size: 0.85rem; font-weight: 500;">Click to upload Marks Sheet</p>
+                                    <input type="file" class="file-input-field" hidden required accept=".pdf,.jpg,.jpeg,.png">
+                                    <span class="selected-file-name" style="display:none;"></span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Income Certificate *</label>
+                                <label class="file-upload-zone">
+                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <p style="font-size: 0.85rem; font-weight: 500;">Click to upload Income Cert</p>
+                                    <input type="file" class="file-input-field" hidden required accept=".pdf,.jpg,.jpeg,.png">
+                                    <span class="selected-file-name" style="display:none;"></span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Community Certificate</label>
+                                <label class="file-upload-zone">
+                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <p style="font-size: 0.85rem; font-weight: 500;">Click to upload Community Cert</p>
+                                    <input type="file" class="file-input-field" hidden accept=".pdf,.jpg,.jpeg,.png">
+                                    <span class="selected-file-name" style="display:none;"></span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Bank Passbook Copy *</label>
+                                <label class="file-upload-zone">
+                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <p style="font-size: 0.85rem; font-weight: 500;">Click to upload Passbook</p>
+                                    <input type="file" class="file-input-field" hidden required accept=".pdf,.jpg,.jpeg,.png">
+                                    <span class="selected-file-name" style="display:none;"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submission Bar -->
+                    <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-bottom: 2rem;">
+                        <a href="dashboard.html" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary btn-lg" style="padding: 0.85rem 2.5rem;">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>
